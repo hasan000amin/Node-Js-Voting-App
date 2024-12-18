@@ -15,8 +15,9 @@ node server.js
 
 http://localhost:3000
 
-  klik gambar kandidat
-  data secara realtime bertambah di chart
+    klik gambar kandidat
+    
+    data secara realtime bertambah di chart
 
 http://localhost:3000/result
 
