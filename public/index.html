@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Polling / Voting</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f4f4f9;
+      }
+
+      h1 {
+        margin-top: 20px;
+      }
+
+      .candidate-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 30px;
+      }
+
+      .candidate {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .candidate img {
+        width: 150px;
+        height: 150px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+
+      .candidate img:hover {
+        transform: scale(1.1);
+      }
+
+      .candidate-name {
+        margin-top: 10px;
+        font-weight: bold;
+      }
+
+      .result-link {
+        display: block;
+        margin-top: 20px;
+        text-decoration: none;
+        font-size: 18px;
+        color: #555;
+      }
+
+      .result-link:hover {
+        color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Himasikom Leader Election 2025</h1>
+
+    <h2>Choose Candidate:</h2>
+
+    <div class="candidate-container">
+      <!-- Calon 1 -->
+      <div class="candidate">
+        <img
+          src="/images/candidate-a.jpg"
+          alt="Candidate A"
+          onclick="vote('Candidate A')"
+        />
+        <span class="candidate-name">Panda & Siti</span>
+      </div>
+
+      <!-- Calon 2 -->
+      <div class="candidate">
+        <img
+          src="/images/candidate-b.jpg"
+          alt="Candidate B"
+          onclick="vote('Candidate B')"
+        />
+        <span class="candidate-name">Adit & Millah</span>
+      </div>
+
+      <!-- Calon 3 -->
+      <div class="candidate">
+        <img
+          src="/images/candidate-c.jpg"
+          alt="Candidate C"
+          onclick="vote('Candidate C')"
+        />
+        <span class="candidate-name">Dede & Ecih</span>
+      </div>
+    </div>
+
+    <a class="result-link" href="/result" target="_blank">Voting Result</a>
+
+    <!-- Tambahkan Toastify.js -->
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
+
+      function vote(candidate) {
+        socket.emit("vote", candidate);
+        Toastify({
+          text: `Terima kasih telah memberikan suara Anda untuk ${candidate}!`,
+          duration: 3000,
+          close: true,
+          gravity: "top",
+          position: "center",
+          backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+        }).showToast();
+      }
+    </script>
+  </body>
+</html>
