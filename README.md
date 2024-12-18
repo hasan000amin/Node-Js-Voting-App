@@ -3,13 +3,13 @@
 Aplikasi untuk menghitung vote pemilihan secara realtime
 
 # Instalasi
-git clone https://github.com/hasan000amin/Node-Js-Voting-App.git
+    git clone https://github.com/hasan000amin/Node-Js-Voting-App.git
 
-cd Node-Js-Voting-App
+    cd Node-Js-Voting-App
 
-npm install
+    npm install
 
-node server.js
+    node server.js
 
 # Akses
 
